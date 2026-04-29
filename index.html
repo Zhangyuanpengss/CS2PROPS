@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en" class="dark" style="color-scheme: dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSPROPS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Russo+One&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+       <nav>
+      <div class="logo-container">
+        <span class="logo-text">CS2</span>
+        <span class="logo-shape">
+          <span class="logo-inner">PROPS</span>
+        </span>
+      </div>
+
+      <div class="menu" >
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 8 6 6"></path>
+            <path d="m4 14 6-6 2-3"></path>
+            <path d="M2 5h12"></path>
+            <path d="M7 2h1"></path>
+            <path d="m22 22-5-10-5 10"></path>
+            <path d="M14 18h6"></path>
+          </svg>
+        </button>
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      </nav>
+    </header>
+    <main>
+      <hero class="hero-container">
+        <img src="assets\hero image\logo.jpg" alt="logo" class="hero-img">
+      </hero>
+      <section class="hero">
+        <section class="header-content">
+          <h1>CS2 Nades Guide</h1>
+          <p>Learn pro CS2 nade lineups for competitive matches.</p>
+        </section>
+      </section>
+      <section class="select-map">
+        <h2>Nade lineups</h2>
+        <div class="map-list">
+          <a class="map-button" href="javascript:void(0)" id="dust2">
+            <div class="aspect-video-relative">
+              <img alt="Dust II Map Overview" fetchpriority="high" decoding="async" data-nimg="fill"  style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="33vw" src="assets\Map image\dust2.webp">
+              <div class="map-name">
+                <h3>Dust II</h3>
+              </div>
+            </div>
+          </a>  
+          <a class="map-button" href="javascript:void(0)" id="mirage">
+            <div class="aspect-video-relative">
+              <img alt="Mirage Map Overview" fetchpriority="high" decoding="async" data-nimg="fill"  style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="33vw" src="assets\Map image\mirage.webp">
+              <div class="map-name">
+                <h3>Mirage</h3>
+              </div>
+            </div>
+          </a> 
+          <a class="map-button" href="javascript:void(0)" id="inferno">
+            <div class="aspect-video-relative">
+              <img alt="Inferno Map Overview" fetchpriority="high" decoding="async" data-nimg="fill"  style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="33vw" src="assets\Map image\inferno.webp">
+              <div class="map-name">
+                <h3>Inferno</h3>
+              </div>
+            </div>
+          </a>           
+          <a class="map-button" href="javascript:void(0)" id="nuke">
+            <div class="aspect-video-relative">
+              <img alt="Nuke Map Overview" fetchpriority="high" decoding="async" data-nimg="fill"  style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="33vw" src="assets\Map image\nuke.webp">
+              <div class="map-name">
+                <h3>Nuke</h3>
+              </div>
+            </div>
+          </a>           
+        </div>
+
+        <div id="nade-type-selection" class="nade-type-tabs" style="display: none;">
+          <button class="type-tab active" data-type="Flashbang">Flashbang</button>
+          <button class="type-tab" data-type="Smoke">Smoke</button>
+          <button class="type-tab" data-type="Molotov">Molotov</button>
+          <button class="type-tab" data-type="HEGrenade">HE Grenade</button>
+        </div>
+
+        <div class="nade-video-carousel" style="display: none;">
+          <button class="carousel-btn prev-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          
+          <div class="carousel-video-wrapper">
+            <div class="video-transition-container">
+              <video class="carousel-video" controls autoplay loop muted>
+                your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <button class="carousel-btn next-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+
+          <div class="carousel-indicators" id="dynamic-indicators"></div>
+        </div>
+
+      </section>
+        <h2>Nade Instructions</h2>
+      <section class="nade-selector">
+            <div class="nade-list">
+                <button class="nade-button" data-type="flashbang">
+                    <img src="assets/icons/flashbang.webp" alt="Flashbang">
+                    <span>Flashbang</span>
+                </button>
+                <button class="nade-button" data-type="hegrenade">
+                    <img src="assets/icons/hegrenade.webp" alt="He Grenade">
+                    <span>He Grenade</span>
+                </button>
+                <button class="nade-button" data-type="smoke">
+                    <img src="assets/icons/smoke.webp" alt="smoke">
+                    <span>smoke</span>
+                </button>
+                <button class="nade-button" data-type="molotov">
+                    <img src="assets/icons/molotov.webp" alt="Molotov">
+                    <span>Molotov</span>
+                </button>
+            <div class="table-container">
+              <table class="nade-info-table">
+                <thead>
+                  <tr>
+                    <th>Nade Type</th>
+                    <th>Usage</th>
+                    <th>Effect</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Flashbang</td>
+                    <td>Used to blind opponents temporarily.</td>
+                    <td>Causes temporary blindness and disorientation.</td>
+                  </tr>
+                  <tr>
+                    <td>He Grenade</td>
+                    <td>Used to deal damage to opponents.</td>
+                    <td>Explodes on impact, dealing area damage.</td>
+                  </tr>
+                  <tr>
+                    <td>smoke</td>
+                    <td>Used to create smoke.</td>
+                    <td>Generates a cloud of smoke that blocks vision.</td>
+                  </tr>
+                  <tr>
+                    <td>Molotov</td>
+                    <td>Used to block paths and deal damage over time.</td>
+                    <td>Creates a fire area that damages opponents over time.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </section>
+        
+        <h2>Player Introduction</h2>
+        <section class="player-carousel-section">
+          <div class="player-carousel">
+            <button class="carousel-btn" id="prev-player" aria-label="Previous player">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+            </button>
+        
+            <div class="player-cards-wrapper" id="player-wrapper">
+              
+              <article class="player-card" data-player="s1mple">
+                <div class="player-image">
+                  <img src="assets/players/player1.webp" alt="Player 1">
+                </div>
+                <div class="player-info">
+                  <h3>s1mple</h3>
+                  <p>AWPer / Star Player</p>
+                </div>
+              </article>
+        
+              <article class="player-card" data-player="ZywOo">
+                <div class="player-image">
+                  <img src="assets/players/player2.webp" alt="Player 2">
+                </div>
+                <div class="player-info">
+                  <h3>ZywOo</h3>
+                  <p>AWPer / Clutch King</p>
+                </div>
+              </article>
+        
+              <article class="player-card" data-player="NiKo">
+                <div class="player-image">
+                  <img src="assets/players/player3.webp" alt="Player 3">
+                </div>
+                <div class="player-info">
+                  <h3>NiKo</h3>
+                  <p>Entry Fragger / Rifler</p>
+                </div>
+              </article>
+
+              <article class="player-card" data-player="m0NESY">
+                <div class="player-image">
+                  <img src="assets/players/player4.webp" alt="Player 4">
+                </div>
+                <div class="player-info">
+                  <h3>m0NESY</h3>
+                  <p>AWPer / Prodigy</p>
+                </div>
+              </article>
+
+              </div>
+        
+            <button class="carousel-btn" id="next-player" aria-label="Next player">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </section>
+
+        <section class="player-details-section" id="player-details" style="display: none;">
+          <h2 id="detail-player-name">Player Name</h2>
+          
+            <div class="media-tabs">
+              <button class="tab-btn active" data-category="mvp">MVP Moments</button>
+              <button class="tab-btn" data-category="funny">Funny Times</button>
+              <button class="tab-btn" data-category="memes">Memes & Pictures</button>
+            </div>
+
+          <div class="media-display-container">
+            <div id="media-content-wrapper">
+              </div>
+          </div>
+        </section>
+       
+        <h2>How to use CS2PROPS</h2>
+        <section class="usage-guide">
+          <ol>
+            <li>Click on a map to view available nade lineups.</li>
+            <li>Use the nade type selector to filter lineups by grenade type.</li>
+            <li>Click on a lineup to view detailed instructions and visuals.</li>
+          </ol>
+          <h2 style="margin-top: 10px;">Other questions? Contact us</h2>
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="type">Feedback Type</label>
+              <select id="type" name="type" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="bug">Report a Bug</option>
+                <option value="feature">Request a Feature</option>
+                <option value="general">General Feedback</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" placeholder="How can we improve CS2 Props?" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2026 CS2 Props. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // 1. 角色卡片左右滑动逻辑
+      const playerWrapper = document.getElementById('player-wrapper');
+      const prevPlayerBtn = document.getElementById('prev-player');
+      const nextPlayerBtn = document.getElementById('next-player');
+
+      if(playerWrapper && prevPlayerBtn && nextPlayerBtn) {
+        nextPlayerBtn.addEventListener('click', () => {
+          playerWrapper.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+
+        prevPlayerBtn.addEventListener('click', () => {
+          playerWrapper.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+      }
+
+      // 2. 选手详情多媒体展示逻辑
+      const playerDetailsSection = document.getElementById('player-details');
+      const detailPlayerName = document.getElementById('detail-player-name');
+      const mediaContentWrapper = document.getElementById('media-content-wrapper');
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const playerCards = document.querySelectorAll('.player-card');
+
+      const playerMediaDatabase = {
+        'm0NESY': {
+          mvp: { type: 'video', src: 'assets/video/Players/Monesy/Mvp/monesy_1v4.mp4', desc: 'Incredible 1v4 clutch on Inferno! Pure mechanical skill.' },
+          funny: { type: 'video', src: 'assets/video/Players/Monesy/Funny time/monesy_fail.mp4', desc: 'm0NESY missing the easiest jump on Mirage.' },
+          memes: { type: 'image', src: 'assets/Image/Players/Monesy/funny picture/monesy_meme.webp', desc: 'When you drop the AWP to save but die anyway.' }
+        },
+        's1mple': {
+          mvp: { type: 'video', src: '...', desc: 's1mple dropping the AWP for a noscope.' },
+          funny: { type: 'video', src: '...', desc: 'FPL raging moments.' },
+          memes: { type: 'image', src: '...', desc: 'The Undertaker of CS2.' }
+        }
+      };
+
+      let currentPlayer = null;
+      let currentCategory = 'mvp';
+
+      function renderMediaContent(player, category) {
+        mediaContentWrapper.innerHTML = ''; 
+        
+        if (!playerMediaDatabase[player] || !playerMediaDatabase[player][category]) {
+          mediaContentWrapper.innerHTML = '<p class="media-description" style="border-left-color: gray;">Content coming soon!</p>';
+          return;
+        }
+
+        const data = playerMediaDatabase[player][category];
+        
+        if (data.type === 'video') {
+          mediaContentWrapper.innerHTML += `
+            <video class="media-content-element" controls autoplay loop muted>
+              <source src="${data.src}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          `;
+        } else if (data.type === 'image') {
+          mediaContentWrapper.innerHTML += `<img src="${data.src}" alt="${player} ${category}" class="media-content-element">`;
+        }
+
+        mediaContentWrapper.innerHTML += `<p class="media-description">${data.desc}</p>`;
+      }
+
+      playerCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const playerName = card.getAttribute('data-player');
+          if (!playerName) return;
+
+          currentPlayer = playerName;
+          detailPlayerName.textContent = `${playerName} Highlights`;
+          
+          playerDetailsSection.style.display = 'block';
+          currentCategory = 'mvp';
+          
+          tabButtons.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-category') === 'mvp');
+          });
+
+          renderMediaContent(currentPlayer, currentCategory);
+
+          setTimeout(() => {
+            playerDetailsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 100);
+        });
+      });
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (!currentPlayer) return;
+          tabButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = btn.getAttribute('data-category');
+          renderMediaContent(currentPlayer, currentCategory);
+        });
+      });
+
+
+      // 3. 表单验证逻辑
+      const contactForm = document.querySelector('.contact-form');
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const typeSelect = document.getElementById('type');
+      const messageInput = document.getElementById('message');
+
+      function showError(input, message) {
+          const formGroup = input.parentElement;
+          const oldError = formGroup.querySelector('.error-message');
+          if (oldError) oldError.remove();
+
+          const errorSpan = document.createElement('span');
+          errorSpan.className = 'error-message';
+          errorSpan.style.color = '#e11d48';
+          errorSpan.style.fontSize = '0.85rem';
+          errorSpan.style.marginTop = '5px';
+          errorSpan.style.display = 'block';
+          errorSpan.innerText = message;
+          
+          formGroup.appendChild(errorSpan);
+          input.classList.add('input-error');
+          input.classList.remove('input-success');
+      }
+
+      function showSuccess(input) {
+          const formGroup = input.parentElement;
+          const oldError = formGroup.querySelector('.error-message');
+          if (oldError) oldError.remove();
+          
+          input.classList.remove('input-error');
+          input.classList.add('input-success');
+      }
+
+      function validateName() {
+          const val = nameInput.value.trim();
+          const nameRegex = /^[a-zA-Z\u4e00-\u9fa5\s]{2,20}$/; 
+          if (val === '') {
+              showError(nameInput, 'Please enter your name');
+              return false;
+          } else if (!nameRegex.test(val)) {
+              showError(nameInput, 'Invalid name format (2-20 characters, no numbers)');
+              return false;
+          } else {
+              showSuccess(nameInput);
+              return true;
+          }
+      }
+
+      function validateEmail() {
+          const val = emailInput.value.trim();
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (val === '') {
+              showError(emailInput, 'Please enter your email address');
+              return false;
+          } else if (!emailRegex.test(val)) {
+              showError(emailInput, 'Please enter a valid email address');
+              return false;
+          } else {
+              showSuccess(emailInput);
+              return true;
+          }
+      }
+
+      function validateType() {
+          const val = typeSelect.value;
+          if (val === '' || val === 'Select an option') {
+              typeSelect.style.borderColor = '#e11d48';
+              return false;
+          } else {
+              typeSelect.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+              return true;
+          }
+      }
+
+      function validateMessage() {
+          const val = messageInput.value.trim();
+          if (val === '') {
+              showError(messageInput, 'Please enter your message');
+              return false;
+          } else if (val.length < 10) {
+              showError(messageInput, 'At least 10 characters required');
+              return false;
+          } else {
+              showSuccess(messageInput);
+              return true;
+          }
+      }
+
+      nameInput.addEventListener('blur', validateName);
+      emailInput.addEventListener('blur', validateEmail);
+      typeSelect.addEventListener('change', validateType);
+      messageInput.addEventListener('blur', validateMessage);
+
+      nameInput.addEventListener('input', () => { if(nameInput.classList.contains('input-error')) validateName(); });
+      emailInput.addEventListener('input', () => { if(emailInput.classList.contains('input-error')) validateEmail(); });
+      messageInput.addEventListener('input', () => { if(messageInput.classList.contains('input-error')) validateMessage(); });
+
+      if(contactForm) {
+          contactForm.addEventListener('submit', function(e) {
+              const isNameValid = validateName();
+              const isEmailValid = validateEmail();
+              const isTypeValid = validateType();
+              const isMessageValid = validateMessage();
+
+              if (!isNameValid || !isEmailValid || !isTypeValid || !isMessageValid) {
+                  e.preventDefault(); 
+                  const firstError = this.querySelector('.input-error') || this.querySelector('select[style*="border-color: #e11d48"]');
+                  if (firstError) {
+                      firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      firstError.focus();
+                  }
+              } else {
+                  alert("Validation passed! The form will be submitted.");
+              }
+          });
+      }
+
+      // 4. 地图道具视频轮播逻辑
+      
+      // 构建模拟数据库，存储各个地图、各个道具类型对应的视频路径
+      const mapNadeDatabase = {
+        dust2: {
+          Flashbang: ['assets/video/Maps/dust2/Flashbang/1.mp4', 'assets/video/Maps/dust2/Flashbang/flash2.mp4'],
+          Smoke: ['assets/video/Maps/dust2/Smoke/smoke1.mp4', 'assets/video/Maps/dust2/Smoke/smoke2.mp4', 'assets/video/Maps/dust2/Smoke/smoke3.mp4'],
+          Molotov: ['assets/video/Maps/dust2/Molotov/molo1.mp4'],
+          HEGrenade: ['assets/video/Maps/dust2/HEGrenade/he1.mp4', 'assets/video/Maps/dust2/HEGrenade/he2.mp4']
+        },
+        mirage: {
+          Flashbang: ['assets/video/Maps/mirage/Flashbang/flash1.mp4'],
+          Smoke: ['assets/video/Maps/mirage/Smoke/smoke1.mp4', 'assets/video/Maps/mirage/Smoke/smoke2.mp4'],
+          Molotov: ['assets/video/Maps/mirage/Molotov/molo1.mp4', 'assets/video/Maps/mirage/Molotov/molo2.mp4'],
+          HEGrenade: ['assets/video/Maps/mirage/HEGrenade/he1.mp4']
+        },
+        inferno: {
+          Flashbang: ['assets/video/Maps/inferno/Flashbang/flash1.mp4', 'assets/video/Maps/inferno/Flashbang/flash2.mp4'],
+          Smoke: ['assets/video/Maps/inferno/Smoke/smoke1.mp4'],
+          Molotov: ['assets/video/Maps/inferno/Molotov/molo1.mp4', 'assets/video/Maps/inferno/Molotov/molo2.mp4', 'assets/video/Maps/inferno/Molotov/molo3.mp4'],
+          HEGrenade: ['assets/video/Maps/inferno/HEGrenade/he1.mp4']
+        },
+        nuke: {
+          Flashbang: ['assets/video/Maps/nuke/Flashbang/flash1.mp4'],
+          Smoke: ['assets/video/Maps/nuke/Smoke/smoke1.mp4', 'assets/video/Maps/nuke/Smoke/smoke2.mp4'],
+          Molotov: ['assets/video/Maps/nuke/Molotov/molo1.mp4'],
+          HEGrenade: ['assets/video/Maps/nuke/HEGrenade/he1.mp4', 'assets/video/Maps/nuke/HEGrenade/he2.mp4']
+        }
+      };
+
+      const mapButtons = document.querySelectorAll('.map-button');
+      const typeTabsContainer = document.getElementById('nade-type-selection');
+      const nadeTypeTabs = document.querySelectorAll('.type-tab');
+      const videoCarousel = document.querySelector('.nade-video-carousel');
+      const carouselVideoElement = document.querySelector('.carousel-video');
+      const prevVideoBtn = document.querySelector('.carousel-btn.prev-btn');
+      const nextVideoBtn = document.querySelector('.carousel-btn.next-btn');
+      const indicatorsContainer = document.getElementById('dynamic-indicators');
+
+      
+      let activeMapId = null;
+      let activeNadeType = 'Flashbang'; 
+      let currentVideoIndex = 0;
+      let currentVideoArray = [];
+
+      
+      function renderCarouselView() {
+        if (!currentVideoArray || currentVideoArray.length === 0) {
+          carouselVideoElement.src = '';
+          indicatorsContainer.innerHTML = '';
+          return;
+        }
+
+        carouselVideoElement.classList.add('fade-out');
+
+        
+        setTimeout(() => {
+          carouselVideoElement.src = currentVideoArray[currentVideoIndex];
+          carouselVideoElement.play().catch(err => console.warn("Auto-play prevented by browser:", err));
+
+          carouselVideoElement.classList.remove('fade-out');
+
+          renderIndicators();
+        }, 300); 
+      }
+
+      function renderIndicators() {
+        indicatorsContainer.innerHTML = '';
+        
+        prevVideoBtn.style.display = currentVideoArray.length > 1 ? 'flex' : 'none';
+        nextVideoBtn.style.display = currentVideoArray.length > 1 ? 'flex' : 'none';
+
+        currentVideoArray.forEach((_, index) => {
+          const dot = document.createElement('div');
+          dot.className = `indicator-dot ${index === currentVideoIndex ? 'active' : ''}`;
+          
+          dot.addEventListener('click', () => {
+            if(currentVideoIndex !== index) {
+              currentVideoIndex = index;
+              renderCarouselView();
+            }
+          });
+          indicatorsContainer.appendChild(dot);
+        });
+      }
+
+      function loadMapVideos() {
+        if (activeMapId && activeNadeType) {
+          currentVideoArray = mapNadeDatabase[activeMapId][activeNadeType] || [];
+          currentVideoIndex = 0; 
+          renderCarouselView();
+        }
+      }
+
+      mapButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          activeMapId = this.id; 
+          
+          typeTabsContainer.style.display = 'flex';
+          videoCarousel.style.display = 'flex';
+          
+          const activeTab = document.querySelector('.type-tab.active');
+          activeNadeType = activeTab ? activeTab.getAttribute('data-type') : 'Flashbang';
+
+          loadMapVideos();
+
+          typeTabsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      });
+
+      nadeTypeTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          nadeTypeTabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+
+          activeNadeType = this.getAttribute('data-type');
+          if (activeMapId) {
+            loadMapVideos();
+          }
+        });
+      });
+
+      if (prevVideoBtn) {
+        prevVideoBtn.addEventListener('click', () => {
+          if (currentVideoArray.length <= 1) return;
+          currentVideoIndex = (currentVideoIndex - 1 + currentVideoArray.length) % currentVideoArray.length;
+          renderCarouselView();
+        });
+      }
+
+      if (nextVideoBtn) {
+        nextVideoBtn.addEventListener('click', () => {
+          if (currentVideoArray.length <= 1) return;
+          currentVideoIndex = (currentVideoIndex + 1) % currentVideoArray.length;
+          renderCarouselView();
+        });
+      }
+
+
+
+    </script>
+  </body>
+</html>
+
+
+
+
