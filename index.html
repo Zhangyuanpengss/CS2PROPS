@@ -7,22 +7,56 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Russo+One&display=swap" rel="stylesheet">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
+    <div id="authModal" class="auth-modal hidden">
+    <div class="contact-form auth-container">
+        <button class="close-btn" id="closeAuth">&times;</button>
+        
+        <div id="loginForm">
+            <h3>LOGIN</h3>
+            <input type="text" id="loginUser" placeholder="Username">
+            <input type="password" id="loginPass" placeholder="Password">
+            <button class="submit-btn" id="doLogin">SIGN IN</button>
+            <p class="switch-text">New user? <a href="#" id="toReg">Register here</a></p>
+        </div>
+
+        <div id="registerForm" class="hidden">
+            <h3>REGISTER</h3>
+            <input type="text" id="regName" placeholder="Full Name">
+            <input type="text" id="regUser" placeholder="Username">
+            <input type="password" id="regPass" placeholder="Password">
+            <div class="avatar-select">
+                <label>Select Avatar:</label>
+                <input type="file" id="regAvatar" accept="image/*">
+            </div>
+            <button class="submit-btn" id="doReg">CREATE ACCOUNT</button>
+            <p class="switch-text">Back to <a href="#" id="toLogin">Login</a></p>
+        </div>
+    </div>
+</div>
     <header class="navbar">
        <nav>
       <div class="logo-container">
-        <span class="logo-text">CS2</span>
-        <span class="logo-shape">
-          <span class="logo-inner">PROPS</span>
-        </span>
+        <img src="assets/Map image/logo.png" alt="CS2 Props Logo" class="logo-image">
       </div>
-      <span></span>
+      
     
 
       <div class="menu" >
+        <div class="menu">
+    <div id="userArea" class="user-area">
+        <button id="loginTriggerBtn" class="nav-text-link">LOGIN</button>
+        <div id="userProfile" class="user-profile hidden">
+            <img id="userAvatar" src="assets/default-avatar.png" alt="Avatar" class="avatar-circle">
+            <span id="userNameDisplay" class="nav-text-link">Username</span>
+            <button id="logoutBtn" class="logout-mini-btn">LOGOUT</button>
+        </div>
+    </div>
+</div>
+
         <button>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
@@ -261,15 +295,54 @@
               </div>
           </div>
         </section>
-       
-        <h2>How to use CS2PROPS</h2>
+       <h2>How to use CSwPROP?</h2>
         <section class="usage-guide">
-          <ol>
-            <li>Click on a map to view available nade lineups.</li>
-            <li>Use the nade type selector to filter lineups by grenade type.</li>
-            <li>Click on a lineup to view detailed instructions and visuals.</li>
-          </ol>
-          <h2 style="margin-top: 10px;">Other questions? Contact us</h2>
+          <div class="accordion custom-accordion" id="usageAccordion">
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="headingOne" style="margin-top: 0;">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Step 1: Select a Map
+                </button>
+              </h3>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#usageAccordion">
+                <div class="accordion-body">
+                  Click on a map to view available nade lineups.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="headingTwo" style="margin-top: 0;">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Step 2: Filter by Grenade Type
+                </button>
+              </h3>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#usageAccordion">
+                <div class="accordion-body">
+                  Use the nade type selector to filter lineups by grenade type.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="headingThree" style="margin-top: 0;">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Step 3: View Instructions
+                </button>
+              </h3>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#usageAccordion">
+                <div class="accordion-body">
+                  Click on a lineup to view detailed instructions and visuals.
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+
+
+          <h2>Other questions? Contact us</h2>
           <form class="contact-form">
             <div class="form-group">
               <label for="name">Your Name</label>
@@ -306,6 +379,7 @@
       </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
       // 1. 角色卡片左右滑动逻辑
       const playerWrapper = document.getElementById('player-wrapper');
@@ -659,10 +733,164 @@
         });
       }
 
+      //汉堡菜单
+      // ====== 动态侧边栏与桌面导航逻辑 ======
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. 获取所有 h2 标签以及导航栏相关容器
+  const headings = document.querySelectorAll("h2");
+  const navMenuDiv = document.querySelector(".menu");
+  const navBarNav = document.querySelector(".navbar nav");
+  
+  // 2. 找到你指定的汉堡菜单按钮 (在 .menu 中是第三个 button)
+  const menuButtons = document.querySelectorAll(".menu button");
+  const sidebarBtn = menuButtons[2]; 
+
+  // 3. 创建侧边栏容器 (移动端) 和 链接容器 (桌面端)
+  const sidebar = document.createElement("aside");
+  sidebar.className = "mobile-sidebar";
+  document.body.appendChild(sidebar);
+
+  const desktopNav = document.createElement("div");
+  desktopNav.className = "desktop-nav-links";
+  // 将桌面导航插入到 Logo 和 右侧图标按钮组之间
+  navBarNav.insertBefore(desktopNav, navMenuDiv);
+
+  // 4. 遍历页面中所有的 h2 标签，生成对应的跳转链接
+  headings.forEach((h2, index) => {
+    // 确保每个 h2 都有 id，如果没有则动态分配一个
+    if (!h2.id) {
+      h2.id = "dynamic-section-" + index;
+    }
+
+    const linkText = h2.textContent;
+
+    // 创建桌面端链接
+    const desktopLink = document.createElement("a");
+    desktopLink.href = "#" + h2.id;
+    desktopLink.textContent = linkText;
+    desktopLink.className = "nav-text-link";
+    desktopNav.appendChild(desktopLink);
+
+    // 创建侧边栏链接
+    const sidebarLink = document.createElement("a");
+    sidebarLink.href = "#" + h2.id;
+    sidebarLink.textContent = linkText;
+    sidebarLink.className = "nav-text-link";
+    sidebar.appendChild(sidebarLink);
+
+    // 点击链接时平滑滚动，并在小屏时自动关闭侧边栏
+    const clickHandler = (e) => {
+      e.preventDefault();
+      // 考虑到 fixed navbar 会遮挡内容，可以加上 navbar 的高度 (100px) 偏移
+      const targetPosition = h2.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top: targetPosition, behavior: "smooth" });
+      
+      sidebar.classList.remove("open");
+    };
+
+    desktopLink.addEventListener("click", clickHandler);
+    sidebarLink.addEventListener("click", clickHandler);
+  });
+
+  // 5. 点击汉堡按钮展示/隐藏侧边栏
+  if (sidebarBtn) {
+    sidebarBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // 防止冒泡触发点击空白处关闭
+      sidebar.classList.toggle("open");
+    });
+  }
+
+  // 点击页面其他区域自动关闭侧边栏
+  document.addEventListener("click", (e) => {
+    if (!sidebar.contains(e.target) && sidebarBtn && !sidebarBtn.contains(e.target)) {
+      sidebar.classList.remove("open");
+    }
+  });
+});
+
+
+
+
+
+
+
+
+// 处理头像转 Base64 字符串存储
+let avatarBase64 = "assets/default-avatar.png";
+document.getElementById('regAvatar').addEventListener('change', function(e) {
+    const reader = new FileReader();
+    reader.onload = function() { avatarBase64 = reader.result; };
+    reader.readAsDataURL(e.target.files[0]);
+});
+
+// 注册逻辑
+document.getElementById('doReg').addEventListener('click', () => {
+    const user = document.getElementById('regUser').value;
+    const pass = document.getElementById('regPass').value;
+    
+    if(!user || !pass) return alert("Please fill all fields");
+
+    let users = JSON.parse(localStorage.getItem('cs_users')) || [];
+    if(users.find(u => u.username === user)) return alert("User exists");
+
+    users.push({ username: user, password: pass, avatar: avatarBase64 });
+    localStorage.setItem('cs_users', JSON.stringify(users));
+    alert("Success! Please login.");
+    document.getElementById('toLogin').click();
+});
+
+// 登录逻辑
+document.getElementById('doLogin').addEventListener('click', () => {
+    const user = document.getElementById('loginUser').value;
+    const pass = document.getElementById('loginPass').value;
+    
+    let users = JSON.parse(localStorage.getItem('cs_users')) || [];
+    const found = users.find(u => u.username === user && u.password === pass);
+
+    if(found) {
+        localStorage.setItem('cs_current_user', JSON.stringify(found));
+        location.reload(); // 刷新页面以更新 UI
+    } else {
+        alert("Invalid credentials");
+    }
+});
+
+// 页面加载时检查状态
+function checkAuth() {
+    const user = JSON.parse(localStorage.getItem('cs_current_user'));
+    if(user) {
+        document.getElementById('loginTriggerBtn').classList.add('hidden');
+        document.getElementById('userProfile').classList.remove('hidden');
+        document.getElementById('userNameDisplay').textContent = user.username;
+        document.getElementById('userAvatar').src = user.avatar;
+    }
+}
+checkAuth();
+
+// 退出登录
+document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('cs_current_user');
+    location.reload();
+});
+
+// 弹窗切换逻辑（显示/隐藏）
+document.getElementById('loginTriggerBtn').onclick = () => document.getElementById('authModal').classList.remove('hidden');
+document.getElementById('closeAuth').onclick = () => document.getElementById('authModal').classList.add('hidden');
+document.getElementById('toReg').onclick = () => {
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('registerForm').classList.remove('hidden');
+};
+document.getElementById('toLogin').onclick = () => {
+    document.getElementById('registerForm').classList.add('hidden');
+    document.getElementById('loginForm').classList.remove('hidden');
+};
+
+
 
 
     </script>
   </body>
+
 </html>
 
 

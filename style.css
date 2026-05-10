@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 100px;
   padding: 0 20px;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -19,10 +19,34 @@
   color: white;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
+.logo-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start;
+  height: 80px !important; /* 强制和导航栏一样高 */
+  max-height: 80px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: unset !important; /* 清除旧字体干扰 */
+}
+
+.logo-image {
+  display: block;
+  height: 100px !important; /* 导航栏60px，图片36px很安全 */
+  max-height: 101px !important;
+  width: auto !important;
+  max-width: 140px !important;
+  object-fit: contain !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.logo-text,
+.logo-shape,
+.logo-inner {
+  display: none !important;
 }
 
 .menu {
@@ -791,5 +815,264 @@ nav {
 @media (max-width: 480px) {
   .player-card {
     flex: 0 0 100%;
+  }
+}
+
+/* ====== 动态导航栏 & 侧边栏样式 ====== */
+
+/* 桌面端导航文字链接容器 */
+.desktop-nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+/* 统一的导航文字链接样式 */
+.nav-text-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-chakra-petch), sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-text-link:hover {
+  color: #e11d48;
+  transform: translateY(-2px);
+}
+
+/* 移动端侧边栏初始状态 (隐藏在屏幕右侧外) */
+.mobile-sidebar {
+  position: fixed;
+  top: 100px; /* 紧贴在高度为100px的navbar下方 */
+  right: -300px;
+  width: 260px;
+  height: calc(100vh - 100px);
+  background-color: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+}
+
+/* 侧边栏展开状态 */
+.mobile-sidebar.open {
+  right: 0;
+}
+
+/* 侧边栏内部链接样式 */
+.mobile-sidebar .nav-text-link {
+  padding: 15px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 1.1rem;
+}
+
+/* ====== 响应式显示逻辑 ====== */
+
+/* 电脑/宽屏设备 (宽度 > 1024px)：隐藏侧边栏和汉堡按钮 */
+@media (min-width: 1025px) {
+  /* 隐藏 .menu 里的第三个按钮（汉堡按钮） */
+  .menu button:nth-child(3) {
+    display: none;
+  }
+  .mobile-sidebar {
+    display: none !important;
+  }
+}
+
+/* 平板/手机设备 (宽度 <= 1024px)：隐藏桌面端链接，显示侧边栏相关 */
+@media (max-width: 1024px) {
+  .desktop-nav-links {
+    display: none;
+  }
+}
+
+/* ====== Bootstrap Accordion 自定义样式覆盖 ====== */
+
+.usage-guide {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.custom-accordion {
+  --bs-accordion-bg: transparent;
+  --bs-accordion-border-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* 让每个折叠项之间有间距 */
+}
+
+/* 独立的折叠项卡片 */
+.custom-accordion .accordion-item {
+  background-color: rgba(255, 255, 255, 0.164);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 12px !important; /* 强制圆角 */
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+/* 手风琴按钮 (未展开) */
+.custom-accordion .accordion-button {
+  background-color: transparent;
+  color: #ffffff;
+  font-family: var(--font-chakra-petch);
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: none !important; /* 移除点击时的蓝色边框 */
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+/* 鼠标悬浮时的效果 */
+.custom-accordion .accordion-button:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* 手风琴按钮 (展开状态) */
+.custom-accordion .accordion-button:not(.collapsed) {
+  background-color: rgba(225, 29, 72, 0.15); /* 使用主题色的透明背景 */
+  color: #e11d48;
+}
+
+/* 自定义右侧箭头图标颜色 (默认是黑色的，需要反转颜色) */
+.custom-accordion .accordion-button::after {
+  filter: invert(1); /* 把默认的黑色箭头变成白色 */
+}
+
+/* 展开状态下箭头变成主题红 */
+.custom-accordion .accordion-button:not(.collapsed)::after {
+  filter: invert(24%) sepia(87%) saturate(3025%) hue-rotate(334deg)
+    brightness(96%) contrast(100%);
+  /* 这是一个通过 filter 模拟 #e11d48 颜色的黑科技 */
+}
+
+/* 折叠内容区域 */
+.custom-accordion .accordion-body {
+  color: #dd5353dc;
+  font-family: var(--font-chakra-petch);
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000 !important; /* 加上这个 */
+  color: #fff;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+/* 移除 Bootstrap 按钮默认的蓝色光晕 */
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: #e11d48;
+}
+
+/* 覆盖全局红边框对手风琴的影响 */
+.accordion-item,
+.accordion-button {
+  border: none !important;
+}
+
+.accordion-item {
+  background-color: rgba(194, 87, 87, 0.05) !important;
+  margin-bottom: 10px;
+  border: 1px solid rgba(150, 147, 148, 0.651) !important; /* 微弱的红边 */
+}
+
+.accordion-button {
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #e11d48 !important;
+  background-color: rgba(225, 29, 72, 0.1) !important;
+}
+
+/* 用户头像样式 */
+.avatar-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #e11d48;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 弹窗遮罩 */
+.auth-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container {
+  position: relative;
+  width: 350px;
+  animation: slideUp 0.3s ease;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.switch-text {
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.switch-text a {
+  color: #e11d48;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
